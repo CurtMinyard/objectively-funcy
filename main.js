@@ -1,36 +1,43 @@
 // YOUR CODE GOES HERE!!!
 /*************************/
-const getFirstName = (obj) => obj.firstName
-
-const getLastName = (obj) => obj.lastName
-
-const getFullName = (obj) =>
-  `${obj.firstName} ${obj.lastName}`
-
-const setFirstName = (obj, name) => obj.firstName = name
-
-const setAge = (obj, num) => obj.age = num
-
-const giveBirthday = (obj) => {
-  if(!obj.age){
-    obj.age = 1
-  }else{
-    obj.age += 1
+function getFirstName(person) {
+  return person.firstName;
+}
+function getLastName(person) {
+  return person.lastName;
+}
+function getFullName(person) {
+  return person.firstName + ' ' + person.lastName;
+}
+function setFirstName(person, newFirstName) {
+  person.firstName = newFirstName;
+  return person;
+}
+function setAge(person, newAge) {
+  person.age = newAge;
+  return person;
+}
+function giveBirthday(person) {
+  if (typeof person.age === 'number') {
+    person.age = person.age + 1;
+  } else {
+    person.age = 1;
   }
+  return person;
 }
+function marry(person1, person2) {
+  person1.married = true;
+  person2.married = true;
 
-const marry = (person1, person2) => {
-  person1.married = true
-  person2.married = true
-  person1.spouseName = getFullName(person2)
-  person2.spouseName = getFullName(person1)
+  person1.spouseName = getFullName(person2);
+  person2.spouseName = getFullName(person1);
 }
+function divorce(person1, person2) {
+  person1.married = false;
+  person2.married = false;
 
-const divorce = (person1, person2) => {
-  person1.married = false
-  person2.married = false
-  delete person1.spouseName
-  delete person2.spouseName
+  delete person1.spouseName;
+  delete person2.spouseName;
 }
 
 /****************************/
